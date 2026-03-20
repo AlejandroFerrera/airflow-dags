@@ -49,6 +49,18 @@ def hello_world():
         ]
         print(f"Quote of the day: {random.choice(quotes)}")
 
+    # Print a fun fact about Python
+    @task
+    def fun_fact():
+        import random
+        facts = [
+            "Python was named after Monty Python, not the snake.",
+            "Python is older than Java — it was created in 1991.",
+            "The Zen of Python has 19 aphorisms. Type 'import this' to read them.",
+            "Python has a built-in function called 'antigravity'. Try importing it.",
+        ]
+        print(f"Fun fact: {random.choice(facts)}")
+
     # Get system hostname
     @task
     def get_hostname():
@@ -57,7 +69,7 @@ def hello_world():
         print(f"System Hostname: {hostname}")
         return hostname
 
-    hello() >> random_number() >> log_timestamp() >> random_emoji() >> random_quote() >> get_hostname()
+    hello() >> random_number() >> log_timestamp() >> random_emoji() >> random_quote() >> fun_fact() >> get_hostname()
 
 
 hello_world()
