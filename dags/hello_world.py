@@ -49,7 +49,15 @@ def hello_world():
         ]
         print(f"Quote of the day: {random.choice(quotes)}")
 
-    hello() >> random_number() >> log_timestamp() >> random_emoji() >> random_quote()
+    # Get system hostname
+    @task
+    def get_hostname():
+        import socket
+        hostname = socket.gethostname()
+        print(f"System Hostname: {hostname}")
+        return hostname
+
+    hello() >> random_number() >> log_timestamp() >> random_emoji() >> random_quote() >> get_hostname()
 
 
 hello_world()
