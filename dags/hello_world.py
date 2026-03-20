@@ -22,7 +22,13 @@ def hello_world():
         print(f"Your random number is: {number}")
         return number
 
-    hello() >> random_number()
+    # Log the current timestamp
+    @task
+    def log_timestamp():
+        now = datetime.now().isoformat()
+        print(f"Task completed at: {now}")
+
+    hello() >> random_number() >> log_timestamp()
 
 
 hello_world()
