@@ -49,16 +49,15 @@ def hello_world():
         ]
         print(f"Quote of the day: {random.choice(quotes)}")
 
-    # Get current IP address
+    # Get system hostname
     @task
-    def get_current_ip():
+    def get_hostname():
         import socket
         hostname = socket.gethostname()
-        ip_address = socket.gethostbyname(hostname)
-        print(f"Current IP Address: {ip_address}")
-        return ip_address
+        print(f"System Hostname: {hostname}")
+        return hostname
 
-    hello() >> random_number() >> log_timestamp() >> random_emoji() >> random_quote() >> get_current_ip()
+    hello() >> random_number() >> log_timestamp() >> random_emoji() >> random_quote() >> get_hostname()
 
 
 hello_world()
