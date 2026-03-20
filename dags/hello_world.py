@@ -28,7 +28,15 @@ def hello_world():
         now = datetime.now().isoformat()
         print(f"Task completed at: {now}")
 
-    hello() >> random_number() >> log_timestamp()
+    # Pick a random emoji to display
+    @task
+    def random_emoji():
+        import random
+        emojis = ["🚀", "🎉", "🔥", "✨", "🐍", "☕", "🌈", "💡"]
+        pick = random.choice(emojis)
+        print(f"Today's emoji: {pick}")
+
+    hello() >> random_number() >> log_timestamp() >> random_emoji()
 
 
 hello_world()
